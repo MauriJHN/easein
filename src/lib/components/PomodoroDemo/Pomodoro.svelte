@@ -3,12 +3,7 @@
 	import { useTimer } from "./useTimer.svelte";
 
     // configuration values
-    let autoStartNextStage = $state(false);
     let toggleNotificationSound = $state(false);
-
-	$effect(() => {
-		timer.setAutoRestart(autoStartNextStage);
-	})
 
 	const Stages = {
 		WORK: 'WORK',
@@ -36,12 +31,12 @@
 </script>
 
 <div class="timer-container">
-	<p>{timer.formattedTime}</p>
-    <input type="checkbox" bind:checked={autoStartNextStage} />
-    <input type="checkbox" bind:checked={toggleNotificationSound} />
+	<p data-testid="time-display">{timer.formattedTime}</p>
+    <input type="checkbox" data-testid="auto-start-checkbox" bind:checked={timer.autoRestart} />
+    <input type="checkbox" data-testid="notification-sound-checkbox" bind:checked={toggleNotificationSound} />
 
-	<button onclick={timer.isRunning ? timer.pause : timer.start}>{timer.isRunning ? 'Pause' : 'Start'}</button>
-	<button onclick={timer.stop}>Stop</button>
+	<button data-testid="start-pause-btn" onclick={timer.isRunning ? timer.pause : timer.start}>{timer.isRunning ? 'Pause' : 'Start'}</button>
+	<button data-testid="stop-btn" onclick={timer.stop}>Stop</button>
 </div>
 
 <style>

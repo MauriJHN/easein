@@ -1,5 +1,5 @@
 <script>
-	import SimplePomodoro from '$lib/components/PomodoroDemo/SimplePomodoro.svelte';
+	import Pomodoro from '$lib/components/PomodoroDemo/Pomodoro.svelte';
 </script>
 
-<SimplePomodoro />
+<Pomodoro />
