@@ -3,7 +3,7 @@ export const TimerDirection = {
     DECREASING: 'decreasing',
 }
 
-export const useTimer = (initialDurationMs: number = 60, speedCoefficient: number = 1, onComplete: () => void = () => {}, direction: string = TimerDirection.DECREASING) => {
+export const useTimer = (initialDurationMs: number = 60, speedCoefficient: number = 1, onComplete: () => void = () => {}, onTimerReset: () => void = () => {}, direction: string = TimerDirection.DECREASING) => {
     const tick = 100; // Update every 100ms
 
     let autoRestart = $state(false);
@@ -48,7 +48,7 @@ export const useTimer = (initialDurationMs: number = 60, speedCoefficient: numbe
             isRunning = true;
 
             if (!intervalId) {
-                if (!startTime) startTime = Date.now();
+                if (!startTime) startTime = Date.now() - elapsedTime / speedCoefficient;
 
                 intervalId = setInterval(() => {
                     elapsedTime = (Date.now() - startTime) * speedCoefficient;
@@ -58,7 +58,7 @@ export const useTimer = (initialDurationMs: number = 60, speedCoefficient: numbe
                     }
 
                     if (direction == TimerDirection.INCREASING) {
-                        if (elapsedTime < 0) handleTimerComplete();
+                        if (elapsedTime <= -1) handleTimerComplete();
                     } else if (elapsedTime >= currentDuration) {
                         handleTimerComplete();
                     }
@@ -68,16 +68,26 @@ export const useTimer = (initialDurationMs: number = 60, speedCoefficient: numbe
     };
 
     const pause = () => {
-        if (isRunning) isRunning = false;
+        isRunning = false;
+        startTime = 0;
         resetInterval();
     };
 
     const stop = () => {
+        onTimerReset();
         isRunning = false;
         elapsedTime = 0;
         startTime = 0;
         resetInterval();
     };
+
+    const getCurrentElapsedTime = () => {
+        if (direction == TimerDirection.INCREASING) {
+            return currentDuration - elapsedTime;
+        } else {
+            return elapsedTime;
+        }
+    }
 
     return {
         get autoRestart() { return autoRestart; },
@@ -86,10 +96,12 @@ export const useTimer = (initialDurationMs: number = 60, speedCoefficient: numbe
         get isRunning() { return isRunning; },
         get speedCoefficient() { return speedCoefficient; },
         set onComplete(callback: () => void) { onComplete = callback; },
+        set onTimerReset(callback: () => void) { onTimerReset = callback; },
         start,
         pause,
         stop,
         setDuration,
         setSpeedCoefficient,
+        getCurrentElapsedTime,
     };
 };

@@ -1,41 +1,55 @@
 <script lang="ts">
-    import { playNotificationSound } from "./notificationSound";
-	import { useTimer } from "./useTimer.svelte";
+	import { playNotificationSound } from './notificationSound';
+	import { useTimer } from './useTimer.svelte';
+	import { PomodoroStage } from '$lib/constants';
+	import { pomodoroStats } from '$lib/stores/useStats.svelte';
 
-    // configuration values
-    let toggleNotificationSound = $state(false);
-
-	const Stages = {
-		WORK: 'WORK',
-		REST: 'REST'
-	};
 	let { workDurationMs = 25 * 1000, restDurationMs = 5 * 1000 } = $props();
-	let currentStage = $state(Stages.WORK);
-	let currentDuration = $derived(currentStage === Stages.WORK ? workDurationMs : restDurationMs);
+	let currentStage = $state(PomodoroStage.WORK);
+	let currentDuration = $derived(currentStage === PomodoroStage.WORK ? workDurationMs : restDurationMs);
+
+	// configuration values
+	let toggleNotificationSound = $state(false);
 
 	let timer = useTimer(currentDuration, 1);
 
-	timer.onComplete = () => {
-        playNotificationSound();
-		timer.setDuration(
-			currentStage === Stages.WORK ? restDurationMs : workDurationMs
-		);
+	timer.onTimerReset = () => {
+		const elapsed = timer.getCurrentElapsedTime();
 
-		if (currentStage === Stages.WORK) {
-			currentStage = Stages.REST;
-		} else {
-			currentStage = Stages.WORK;
+		if (elapsed > 1000) {
+			if (currentStage === PomodoroStage.WORK) {
+				pomodoroStats.recordWorkSession(elapsed);
+			} else {
+				pomodoroStats.recordRestSession(elapsed);
+			}
 		}
 	};
+	
+	timer.onComplete = () => {
+		playNotificationSound();
+		timer.setDuration(currentStage === PomodoroStage.WORK ? restDurationMs : workDurationMs);
 
+		if (currentStage === PomodoroStage.WORK) {
+			currentStage = PomodoroStage.SHORT_REST;
+		} else {
+			currentStage = PomodoroStage.WORK;
+		}
+
+	};
 </script>
 
 <div class="timer-container">
 	<p data-testid="time-display">{timer.formattedTime}</p>
-    <input type="checkbox" data-testid="auto-start-checkbox" bind:checked={timer.autoRestart} />
-    <input type="checkbox" data-testid="notification-sound-checkbox" bind:checked={toggleNotificationSound} />
+	<input type="checkbox" data-testid="auto-start-checkbox" bind:checked={timer.autoRestart} />
+	<input
+		type="checkbox"
+		data-testid="notification-sound-checkbox"
+		bind:checked={toggleNotificationSound}
+	/>
 
-	<button data-testid="start-pause-btn" onclick={timer.isRunning ? timer.pause : timer.start}>{timer.isRunning ? 'Pause' : 'Start'}</button>
+	<button data-testid="start-pause-btn" onclick={timer.isRunning ? timer.pause : timer.start}
+		>{timer.isRunning ? 'Pause' : 'Start'}</button
+	>
 	<button data-testid="stop-btn" onclick={timer.stop}>Stop</button>
 </div>
 
@@ -50,8 +64,8 @@
 		color: #fff;
 		border-radius: 20px;
 
-         p {
-            font-size: 48px;
-         }
+		p {
+			font-size: 48px;
+		}
 	}
 </style>
