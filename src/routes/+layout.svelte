@@ -1,13 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { locales, localizeHref } from '$lib/paraglide/runtime';
-	import favicon from '$lib/assets/favicon.svg';
+	import { locales, localizeHref } from '../../src-archive/paraglide/runtime';
 	import '../app.css';
 
 	let { children } = $props();
 </script>
-
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 {@render children()}
 <div style="display:none">

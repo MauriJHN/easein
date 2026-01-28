@@ -1,5 +1,5 @@
 <script lang="ts">
-	import StatsPanel from "$lib/components/PomodoroDemo/StatsPanel.svelte";
+	import StatsPanel from "../../../../../src-archive/PomodoroDemo/StatsPanel.svelte";
 
 
 </script>
