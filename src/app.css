@@ -123,4 +123,5 @@ button {
 
 .mono-font {
 	font-family: 'Monofett', monospace;
+	letter-spacing: 0.25rem;
 }

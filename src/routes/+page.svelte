@@ -1,5 +1,6 @@
 <script lang="ts">
 	import SvgBackground from "$lib/components/SvgBackground.svelte";
+	import Pomodoro from "$lib/components/Pomodoro.svelte";
 </script>
 
 <div class="page-wrapper">
@@ -8,8 +9,7 @@
 	</div>
 
 	<div class="content">
-		<h1 class="mono-font">Coming Soon</h1>
-		<p>Ease into either, work or rest</p>
+		<Pomodoro />
 	</div>
 </div>
 

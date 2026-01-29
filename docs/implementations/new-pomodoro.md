@@ -28,6 +28,24 @@ Get a minimal, but functional app going in the new app page.
 - Write extensive unit tests for the basic components of the app
 - Have hard-coded configuration values
 
+#### File Structure
+
+For this first stage, ideally, only the following components and pages will be used:
+
+- `lib/components/Pomodoro.svelte`
+- `lib/components/TimerControls.svelte`
+- `lib/components/TimeDisplay.svelte`
+- `lib/hooks/useTimer.svelte.ts`
+- `lib/utils/notificationSound.ts`
+- `lib/constants/pomodoro.ts`
+- `lib/constants/timer.ts`
+- `lib/constants/index.ts`
+
+#### `TimerControls.svelte`
+
+- What should this component use from `Pomodoro.svelte`?
+  - This component could take in the `elapsedTime` and `currentDuration` values from Pomodoro and format it based on whether the use wants to countdown or count up for the timer
+
 ### 3. Configuration
 
 - Create configuration component using the layered approach generated on claude.ai

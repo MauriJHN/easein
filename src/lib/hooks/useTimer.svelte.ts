@@ -14,12 +14,6 @@ export const useTimer = (initialDurationMs: number = 60, speedCoefficient: numbe
     let isRunning = $state(false);
     let currentDuration = $derived(durationMs);
 
-    const formattedTime = $derived(
-        `${String(Math.floor((currentDuration - elapsedTime) / 1000 / 60)).padStart(2, '0')}:${String(
-            Math.floor((currentDuration - elapsedTime) / 1000) % 60
-        ).padStart(2, '0')}`
-    );
-
     const setDuration = (newDurationMs: number) => {
         durationMs = newDurationMs;
     }
@@ -58,6 +52,7 @@ export const useTimer = (initialDurationMs: number = 60, speedCoefficient: numbe
                     }
 
                     if (direction == TimerDirection.INCREASING) {
+                        // here the elapsedTime counts down to 0
                         if (elapsedTime <= -1) handleTimerComplete();
                     } else if (elapsedTime >= currentDuration) {
                         handleTimerComplete();
@@ -92,9 +87,10 @@ export const useTimer = (initialDurationMs: number = 60, speedCoefficient: numbe
     return {
         get autoRestart() { return autoRestart; },
         set autoRestart(value: boolean) { autoRestart = value; },
-        get formattedTime() { return formattedTime; },
         get isRunning() { return isRunning; },
         get speedCoefficient() { return speedCoefficient; },
+        get currentDuration() { return currentDuration; },
+        get elapsedTime() { return getCurrentElapsedTime(); },
         set onComplete(callback: () => void) { onComplete = callback; },
         set onTimerReset(callback: () => void) { onTimerReset = callback; },
         start,
