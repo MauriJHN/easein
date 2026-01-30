@@ -11,7 +11,7 @@
     }
 </script>
 
-<button class="toggle-control" onclick={toggle}>
+<button class="toggle-control" data-testid="toggle-control-btn" onclick={toggle}>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="inline-block">
         {#if icon}
             {@render icon()}
@@ -19,7 +19,15 @@
             <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="currentColor" />
         {/if}
         {#if !toggleFlag}
-            <path d="M 2,2 l 20,20" stroke-width="2" stroke="currentColor" />
+            <path d="M 2,2 l 20,20" stroke-width="2" stroke="currentColor" data-testid="toggle-off-path" />
         {/if}
     </svg>
 </button>
+
+<style scoped>
+    .toggle-control {
+        background: none;
+        text-decoration: none;
+        border: none;
+    }
+</style>

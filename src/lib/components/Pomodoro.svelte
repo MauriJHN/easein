@@ -27,7 +27,7 @@
 	};
 
 	timer.onComplete = () => {
-		playNotificationSound();
+		if (toggleNotificationSound) playNotificationSound();
 		goToNextStage();
 	};
 
@@ -36,7 +36,7 @@
 
 <div class="timer-container">
 	<TimerDisplay elapsedTime={timer.elapsedTime} {currentDuration} {ascending} />
-	<TimerControls isRunning={timer.isRunning} start={timer.start} pause={timer.pause} stop={timer.stop} autoRestart={timer.autoRestart} toggleNotificationSound={toggleNotificationSound} goToNextStage={goToNextStage} />
+	<TimerControls isRunning={timer.isRunning} start={timer.start} pause={timer.pause} stop={timer.stop} bind:autoRestart={timer.autoRestart} bind:toggleNotificationSound={toggleNotificationSound} goToNextStage={goToNextStage} />
 </div>
 
 <style scoped>
