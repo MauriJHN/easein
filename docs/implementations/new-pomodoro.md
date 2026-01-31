@@ -26,7 +26,7 @@ Get a minimal, but functional app going in the new app page.
 
 1. - [x] Cleanup project leaving only components relevant for new version of app
 2. - [x]  Create basic app with hard-coded configuration values
-3. - [ ]  Create configuration components and create new configuration page
+3. - [x]  Create configuration components and create new configuration page
 4. - [ ]  Implement gradual increment or decrement functionality for work and rest stages
 5. - [ ]  Create statistics components and create basic statistics visualization page
 6. - [ ]  Add complex graphs to visualize app use in different scenarios

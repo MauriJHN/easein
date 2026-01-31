@@ -86,7 +86,7 @@
 		align-items: center;
 		justify-content: center;
 		gap: 1.5rem;
-		margin-top: 1rem;
+		margin-top: 3rem;
 
 		div {
 			display: flex;
@@ -97,8 +97,9 @@
 	}
 
 	.save-btn {
-		margin-top: 2rem;
-		width: 100%;
+        display: block;
+		margin: 4rem auto 0;
+		width: 90%;
 		font-size: 1.1rem;
 		font-weight: 600;
 	}
