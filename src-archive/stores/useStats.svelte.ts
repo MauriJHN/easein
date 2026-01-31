@@ -1,4 +1,3 @@
-import type Pomodoro from "$lib/components/PomodoroDemo/Pomodoro.svelte";
 import { POMODORO_STATS_COOKIE } from "$lib/constants";
 
 interface PomodoroStats {

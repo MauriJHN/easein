@@ -4,16 +4,14 @@
 	import { PomodoroStage } from '$lib/constants';
 	import TimerDisplay from './TimerDisplay.svelte';
 	import TimerControls from './TimerControls.svelte';
+	import { configurationStore } from '$lib/stores/useConfig.svelte';
 
-	let { workDurationMs = 25 * 60 * 1000, restDurationMs = 5 * 60 * 1000 } = $props();
+	let config = configurationStore.config;
+	let { workDurationMs = config.workDurationMs, restDurationMs = config.restDurationMs } = $props();
 	let currentStage: string = $state(PomodoroStage.WORK);
 	let currentDuration = $derived(
 		currentStage === PomodoroStage.WORK ? workDurationMs : restDurationMs
 	);
-
-	// configuration values
-	let toggleNotificationSound = $state(false);
-
 	let timer = useTimer(currentDuration, 1);
 
 	const goToNextStage = () => {
@@ -27,7 +25,7 @@
 	};
 
 	timer.onComplete = () => {
-		if (toggleNotificationSound) playNotificationSound();
+		if (config.toggleNotificationSound) playNotificationSound();
 		goToNextStage();
 	};
 
@@ -36,7 +34,7 @@
 
 <div class="timer-container">
 	<TimerDisplay elapsedTime={timer.elapsedTime} {currentDuration} {ascending} />
-	<TimerControls isRunning={timer.isRunning} start={timer.start} pause={timer.pause} stop={timer.stop} bind:autoRestart={timer.autoRestart} bind:toggleNotificationSound={toggleNotificationSound} goToNextStage={goToNextStage} />
+	<TimerControls isRunning={timer.isRunning} start={timer.start} pause={timer.pause} stop={timer.stop} bind:autoRestart={timer.autoRestart} bind:toggleNotificationSound={config.toggleNotificationSound} goToNextStage={goToNextStage} />
 </div>
 
 <style scoped>
@@ -47,9 +45,5 @@
 		justify-content: center;
 		height: 100%;
 		width: 100%;
-		/* background-color: #282c34; */
-		padding: 20px;
-		border-radius: 10px;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	}
 </style>

@@ -9,5 +9,3 @@ export const PomodoroStage = {
 } as const;
 
 export type PomodoroStage = typeof PomodoroStage[keyof typeof PomodoroStage];
-
-export const POMODORO_STATS_COOKIE = 'pomodoroStats';

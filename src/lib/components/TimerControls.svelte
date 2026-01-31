@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '$lib/styles/buttons.css'
 	import BellIcon from './icons/BellIcon.svelte';
 	import CycleIcon from './icons/CycleIcon.svelte';
 	import ToggleControl from './ToggleControl.svelte';
@@ -43,11 +44,11 @@
 	</div>
 
 	<div class="buttons">
-		<button data-testid="start-pause-btn" onclick={isRunning ? pause : start}
+		<button class="default-btn" data-testid="start-pause-btn" onclick={isRunning ? pause : start}
 			>{isRunning ? 'Pause' : 'Start'}</button
 		>
-		<button data-testid="reset-btn" onclick={stop}>Reset</button>
-		<button data-testid="next-stage-btn" onclick={goToNextStage}>Next Stage</button>
+		<button class="default-btn" data-testid="reset-btn" onclick={stop}>Reset</button>
+		<button class="default-btn" data-testid="next-stage-btn" onclick={goToNextStage}>Next Stage</button>
 	</div>
 </div>
 
@@ -70,20 +71,6 @@
 
 		button {
 			min-width: 110px;
-			padding: 10px 20px;
-			font-size: 1.1rem;
-			border: 2px solid var(--color-text);
-			border-radius: 20px;
-			background-color: transparent;
-			color: var(--color-text);
-			cursor: pointer;
-			transition: background-color 0.3s;
-
-			&:hover {
-				background-color: var(--color-primary);
-			}
 		}
 	}
-
-
 </style>

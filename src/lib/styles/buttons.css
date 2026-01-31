@@ -1,0 +1,34 @@
+button {
+	box-sizing: border-box;
+}
+
+.default-btn {
+	padding: 10px 20px;
+	font-size: 1.1rem;
+	border: 2px solid var(--color-text);
+	border-radius: 20px;
+	background-color: transparent;
+	color: var(--color-text);
+	cursor: pointer;
+	transition: background-color 0.3s;
+
+	&:hover {
+		background-color: var(--color-hover);
+		color: var(--color-bg);
+		border-color: var(--color-bg);
+	}
+}
+
+.nav-btn {
+	padding: 8px 16px;
+	font-size: 1rem;
+	border-radius: 15px;
+	background-color: var(--color-mute);
+	color: var(--color-text);
+	cursor: pointer;
+	transition: background-color 0.3s;
+
+	&:hover {
+		background-color: var(--color-hover);
+	}
+}

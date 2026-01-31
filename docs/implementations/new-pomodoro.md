@@ -1,19 +1,35 @@
 # Pomodoro Timer App
 
+- [Pomodoro Timer App](#pomodoro-timer-app)
+  - [Goal](#goal)
+  - [Steps](#steps)
+    - [Basic Steps](#basic-steps)
+    - [1. Cleanup Project](#1-cleanup-project)
+    - [2. Basic App](#2-basic-app)
+      - [File Structure](#file-structure)
+      - [`TimerControls.svelte`](#timercontrolssvelte)
+    - [3. Configuration](#3-configuration)
+    - [4. Incremental Stages](#4-incremental-stages)
+    - [5. Statistics](#5-statistics)
+    - [6. Stats Graphs](#6-stats-graphs)
+    - [7. (Optional) Vector Backgrounds](#7-optional-vector-backgrounds)
+  - [Notes on Implementation](#notes-on-implementation)
+    - [Tracking Work and Rest Durations](#tracking-work-and-rest-durations)
+
 ## Goal
 
 Get a minimal, but functional app going in the new app page.
 
 ## Steps
 
-## Basic Steps
+### Basic Steps
 
-1. Cleanup project leaving only components relevant for new version of app
-2. Create basic app with hard-coded configuration values
-3. Create configuration components and create new configuration page
-4. Implement gradual increment or decrement functionality for work and rest stages
-5. Create statistics components and create basic statistics visualization page
-6. Add complex graphs to visualize app use in different scenarios
+1. - [x] Cleanup project leaving only components relevant for new version of app
+2. - [x]  Create basic app with hard-coded configuration values
+3. - [ ]  Create configuration components and create new configuration page
+4. - [ ]  Implement gradual increment or decrement functionality for work and rest stages
+5. - [ ]  Create statistics components and create basic statistics visualization page
+6. - [ ]  Add complex graphs to visualize app use in different scenarios
 
 ### 1. Cleanup Project
 
@@ -88,7 +104,7 @@ For this first stage, ideally, only the following components and pages will be u
 - Always push changes to the remote branch
 - Always create at least basic unittesting for every new component and new features
 
-## Tracking Work and Rest Durations
+### Tracking Work and Rest Durations
 
 - Would it make sense to use context functionality to store the values?
 - Could I include the tracking logic inside the component responsible of tracking statistics, or would the data be transferred among components to display statistical data
