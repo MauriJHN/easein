@@ -30,8 +30,8 @@ export const useTimer = (initialDurationMs: number = 60, speedCoefficient: numbe
     };
 
     const handleTimerComplete = () => {
-        stop();
         onComplete();
+        stop();
         if (autoRestart) start();
     };
 

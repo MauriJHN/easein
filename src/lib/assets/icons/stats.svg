@@ -4,7 +4,7 @@
 <svg
    width="19.5"
    height="24"
-   viewBox="-3 0 19.5 24"
+   viewBox="0 0 24 24"
    version="1.1"
    id="svg11"
    sodipodi:docname="stats-svgrepo-com-24x24.svg"
@@ -15,8 +15,7 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <sodipodi:namedview
      id="namedview13"
      pagecolor="#505050"
@@ -28,8 +27,8 @@
      inkscape:deskcolor="#505050"
      showgrid="false"
      inkscape:zoom="27.59375"
-     inkscape:cx="13.010193"
-     inkscape:cy="16"
+     inkscape:cx="13.300113"
+     inkscape:cy="10.745187"
      inkscape:window-width="1920"
      inkscape:window-height="1131"
      inkscape:window-x="0"
@@ -43,10 +42,10 @@
   <defs
      id="defs6" />
   <path
-     d="M 7.4999998,0 H 5.9999999 c -0.828,0 -1.5,0.67199999 -1.5,1.4999999 V 22.5 c 0,0.828 0.672,1.5 1.5,1.5 H 7.4999998 C 8.3279999,24 9,23.328 9,22.5 V 1.4999999 C 9,0.67199999 8.3279999,0 7.4999998,0 Z M 15,12 h -1.500001 c -0.828,0 -1.5,0.672 -1.5,1.5 v 9 c 0,0.828 0.672,1.5 1.5,1.5 H 15 c 0.828,0 1.5,-0.672 1.5,-1.5 v -9 C 16.5,12.672 15.828,12 15,12 Z M -4.8749999e-8,6.7499999 H -1.5000001 C -2.328,6.7499999 -3,7.4219999 -3,8.2499997 V 22.5 c 0,0.828 0.672,1.5 1.4999999,1.5 H -4.8749999e-8 C 0.82799993,24 1.4999999,23.328 1.4999999,22.5 V 8.2499997 C 1.4999999,7.4219999 0.82799993,6.7499999 -4.8749999e-8,6.7499999 Z"
-     id="stats"
-     sketch:type="MSShapeGroup"
-     style="stroke-width:0.75" />
+     d="m 12.75,0 h -1.5 C 10.422,0 9.7499999,0.672 9.7499999,1.4999999 V 22.5 c 0,0.828 0.6720001,1.5 1.5000001,1.5 h 1.5 c 0.828,0 1.5,-0.672 1.5,-1.5 V 1.4999999 C 14.25,0.672 13.578,0 12.75,0 Z m 7.5,12 h -1.500001 c -0.828,0 -1.5,0.672 -1.5,1.5 v 9 c 0,0.828 0.672,1.5 1.5,1.5 H 20.25 c 0.828,0 1.5,-0.672 1.5,-1.5 v -9 c 0,-0.828 -0.672,-1.5 -1.5,-1.5 z M 5.25,6.7499999 H 3.7499999 C 2.922,6.7499999 2.25,7.4219999 2.25,8.2499997 V 22.5 c 0,0.828 0.672,1.5 1.4999999,1.5 H 5.25 c 0.8279999,0 1.4999999,-0.672 1.4999999,-1.5 V 8.2499997 c 0,-0.8279998 -0.672,-1.4999998 -1.4999999,-1.4999998 z"
+     style="stroke-width:0.75"
+     inkscape:label="stats-icon"
+     id="path856" />
   <metadata
      id="metadata296">
     <rdf:RDF>

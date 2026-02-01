@@ -1,13 +1,19 @@
 <script lang="ts">
 	import Pomodoro from "$lib/components/Pomodoro.svelte";
 	import ConfigIcon from "$lib/components/icons/ConfigIcon.svelte";
+	import StatsIcon from "$lib/components/icons/StatsIcon.svelte";
 </script>
 
 <div class="page-wrapper">
-	<div class="config-link-container">
+	<div class="page-link-container">
 		<a href="/configuration">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 				<ConfigIcon />
+			</svg>
+		</a>
+		<a href="/statistics">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				<StatsIcon />
 			</svg>
 		</a>
 	</div>
@@ -18,9 +24,10 @@
 </div>
 
 <style>
-	.config-link-container {
+	.page-link-container {
 		display: flex;
 		justify-content: center;
+		gap: 1rem;
 		padding: 1rem;
 		
 		a {

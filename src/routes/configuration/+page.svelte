@@ -17,7 +17,10 @@
 
 	<p class="info" data-testid="session-info">Session: <b>{formatTime(sessionMs)}</b></p>
 	<p class="info" data-testid="work-split-info">
-		Working <b>{Math.round(workSplit * 100)}%</b> of total session. Approximately
+		Working <b>{Math.round(workSplit * 100)}%</b> per session.
+	</p>
+	<p class="info">
+		Approximately
 		<b>{Math.round(workSplit * 60)} minutes</b> each hour.
 	</p>
 	<div class="duration-inputs">
@@ -70,21 +73,10 @@
 		margin-top: 1rem;
 	}
 
-	.go-back-btn {
-		text-decoration: none;
-		margin-bottom: 1rem;
-		display: inline-block;
-		font-size: 0.95rem;
-		font-weight: 500;
-		transition: color 0.2s;
-		padding: 0.5rem 1rem;
-		border-radius: 0.5rem;
-	}
-
 	.duration-inputs {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-evenly;
 		gap: 1.5rem;
 		margin-top: 3rem;
 
@@ -97,9 +89,9 @@
 	}
 
 	.save-btn {
-        display: block;
+		display: block;
 		margin: 4rem auto 0;
-		width: 90%;
+		width: 100%;
 		font-size: 1.1rem;
 		font-weight: 600;
 	}

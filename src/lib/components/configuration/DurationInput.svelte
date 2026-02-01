@@ -11,13 +11,26 @@
 	let { value = $bindable(0), step = 60000, min = 0, max = 60 * 60 * 1000 }: Props = $props();
 
 	function increment() {
-		const newValue = value + step;
-		value = Math.min(newValue, max);
+        if (value < 60000) {
+            // account for seconds within a minute
+            const newValue = value + 1000;
+            value = Math.min(newValue, max);
+        } else {
+            if (value >= max) return;
+            const newValue = value + step;
+            value = Math.min(newValue, max);
+        }
 	}
 
 	function decrement() {
-		const newValue = value - step;
-		value = Math.max(newValue, min);
+        if (value <= 60000) {
+            // account for seconds within a minute
+            const newValue = value - 1000;
+            value = Math.max(newValue, min);
+        } else {
+            const newValue = value - step;
+            value = Math.max(newValue, min);
+        }
 	}
 
 	const displayTime = $derived(formatTime(value));

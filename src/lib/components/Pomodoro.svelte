@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { statsStore } from '$lib/stores/useStats.svelte';
 	import { playNotificationSound } from '../utils/notificationSound';
 	import { useTimer } from '$lib/hooks/useTimer.svelte';
 	import { PomodoroStage } from '$lib/constants';
@@ -15,10 +16,13 @@
 	let timer = useTimer(currentDuration, 1);
 
 	const goToNextStage = () => {
+		// NOTE: stat records are also handled here
 		if (currentStage === PomodoroStage.WORK) {
+			statsStore.recordWorkSession(timer.getCurrentElapsedTime());
 			currentStage = PomodoroStage.SHORT_REST;
 			timer.setDuration(restDurationMs);
 		} else {
+			statsStore.recordRestSession(timer.getCurrentElapsedTime());
 			currentStage = PomodoroStage.WORK;
 			timer.setDuration(workDurationMs);
 		}
@@ -34,7 +38,15 @@
 
 <div class="timer-container">
 	<TimerDisplay elapsedTime={timer.elapsedTime} {currentDuration} {ascending} />
-	<TimerControls isRunning={timer.isRunning} start={timer.start} pause={timer.pause} stop={timer.stop} bind:autoRestart={timer.autoRestart} bind:toggleNotificationSound={config.toggleNotificationSound} goToNextStage={goToNextStage} />
+	<TimerControls
+		isRunning={timer.isRunning}
+		start={timer.start}
+		pause={timer.pause}
+		stop={timer.stop}
+		bind:autoRestart={timer.autoRestart}
+		bind:toggleNotificationSound={config.toggleNotificationSound}
+		{goToNextStage}
+	/>
 </div>
 
 <style scoped>
